@@ -6,11 +6,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.annotation.StreamRetryTemplate;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.support.ErrorMessage;
+import org.springframework.retry.annotation.Retryable;
+import org.springframework.retry.support.RetryTemplate;
+
 
 @EnableBinding(MyProcessor.class)
 public class Consumer {
@@ -18,16 +23,22 @@ public class Consumer {
     private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
     @StreamListener(MyProcessor.INPUT)
-    public void handle(Message<MessageDTO> message) {
-        logger.info("App-A Received : {}", message);
+    @SendTo(MyProcessor.OUTPUT)
+    public Message<MessageDTO> handle(Message<MessageDTO> message) {
+        logger.info("App-B Received : {}", message);
+        message.getPayload().getId().intValue();
+        message.getPayload().setHasConsume(true);
+        logger.info("App-B Reply : {}", message.getPayload());
+
         offsetCommit(message);
+
+        return message;
     }
 
-    @ServiceActivator(inputChannel = "topic2.myGroup.errors")
+    @ServiceActivator(inputChannel = "topic1.myGroup.errors")
     public void error(ErrorMessage errorMessage) {
         logger.error("In Custom ErrorHandle");
         logger.error("ErrorMessage : {}", errorMessage);
-        logger.error("OriginalMessage : {}", errorMessage.getOriginalMessage());
         logger.error("Error Message : {}", errorMessage.getPayload().getMessage());
     }
 
@@ -35,7 +46,6 @@ public class Consumer {
     public void errorGlobal(ErrorMessage errorMessage) {
         logger.error("In Global ErrorHandle");
         logger.error("ErrorMessage : {}", errorMessage);
-        logger.error("OriginalMessage : {}", errorMessage.getOriginalMessage());
         logger.error("Error Message : {}", errorMessage.getPayload().getMessage());
     }
 
@@ -52,6 +62,11 @@ public class Consumer {
         if (acknowledgment != null) {
             acknowledgment.acknowledge();
         }
+    }
+
+    @StreamRetryTemplate
+    public RetryTemplate myRetryTemplate() {
+        return new RetryTemplate();
     }
 
 }
