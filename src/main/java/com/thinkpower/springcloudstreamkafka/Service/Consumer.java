@@ -22,6 +22,7 @@ public class Consumer {
 
     private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
+
     @StreamListener(MyProcessor.INPUT)
     @SendTo(MyProcessor.OUTPUT)
     public Message<MessageDTO> handle(Message<MessageDTO> message) {
@@ -35,7 +36,7 @@ public class Consumer {
         return message;
     }
 
-    @ServiceActivator(inputChannel = "topic1.myGroup.errors")
+    @ServiceActivator(inputChannel = "topic2.myGroup.errors")
     public void error(ErrorMessage errorMessage) {
         logger.error("In Custom ErrorHandle");
         logger.error("ErrorMessage : {}", errorMessage);
