@@ -19,7 +19,6 @@ public class MessageController {
     @RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
     public void publishMessageString(@RequestBody MessageDTO payload) {
         messageService.sendMessage(payload);
-        
     }
 }
 
