@@ -22,7 +22,6 @@ public class Consumer {
 
     private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
 
-
     @StreamListener(MyProcessor.INPUT)
     @SendTo(MyProcessor.OUTPUT)
     public Message<MessageDTO> handle(Message<MessageDTO> message) {
