@@ -33,12 +33,15 @@ pipeline {
     		}
         }
         stage('Deploy') {
-            input {
-                message "Test Success Deploy ?"
-                ok "Yes."
-                submitter "Kevin"
-            }
             steps {
+        		script {
+	        		if (env.BRANCH_NAME == 'master') {       			
+			            input {
+	                		message "Test Success Deploy ?"
+	                		ok "Yes."
+	                	}
+	            	}
+	        	}
                 echo "Deploy Success !"
             }
         }
