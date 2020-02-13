@@ -30,6 +30,11 @@ pipeline {
     					echo "Test B Pass"
     				}
     			}
+    			stage('Test C') {
+    				steps {
+    					echo "Test C Pass"
+    				}
+    			}
     		}
         }
         stage('Deploy') {
