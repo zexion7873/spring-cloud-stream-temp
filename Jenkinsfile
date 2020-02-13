@@ -3,7 +3,7 @@ pipeline {
     options {
         retry(3)
         timestamps()
-        timeout(time: 1, unit: 'MINUTES')
+        timeout(time: 1, unit: 'HOURS')
     }
     stages {
         stage('Build') {
@@ -15,7 +15,7 @@ pipeline {
 			when {
 				anyOf {
 					branch 'master'
-					branch 'sit'
+					branch 'uat'
 				}
 			}
             failFast true
