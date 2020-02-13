@@ -37,13 +37,13 @@ pipeline {
     			}
     		}
         }
-        stage('Deploy') {
+        stage('Deliver') {
             input {
-        		message "Test Success Deploy ?"
+        		message "Test Success, To Deliver ?"
         		ok "Yes."
         	}
             steps {
-            	echo "Deploy Success !"
+            	echo "Deliver Success !"
             }
         }
     }
