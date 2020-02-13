@@ -13,7 +13,10 @@ pipeline {
         }
         stage('Parallel Test') {
 			when {
-				branch 'master'
+				anyOf {
+					branch 'master'
+					branch 'sit'
+				}
 			}
             failFast true
     		parallel {
@@ -33,6 +36,7 @@ pipeline {
             input {
                 message "Test Success Deploy ?"
                 ok "Yes."
+                submitter "Kevin"
             }
             steps {
                 echo "Deploy Success !"
