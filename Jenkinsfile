@@ -55,6 +55,7 @@ pipeline {
             	echo "NODE_NAME : ${env.NODE_NAME}" 
             	echo "WORKSPACE : ${env.WORKSPACE}" 
             	echo "BRANCH_NAME : ${env.BRANCH_NAME}"
+            	echo "CHANGE_ID : ${env.CHANGE_ID}"
             }
         }
     }
