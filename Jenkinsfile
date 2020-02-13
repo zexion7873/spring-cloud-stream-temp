@@ -3,10 +3,7 @@ pipeline {
     options {
         retry(3)
         timestamps()
-        timeout(time: 1, unit: 'HOURS')
-    }
-    parameters {
-        choice(name: 'CHOICE', choices: ['DEV', 'SIT', 'UAT', 'PROD'], description: 'Pick something')
+        timeout(time: 1, unit: 'MINUTES')
     }
     stages {
         stage('Build') {
