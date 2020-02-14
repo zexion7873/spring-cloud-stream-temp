@@ -18,7 +18,7 @@ pipeline {
         }
 
       }
-      // failFast true
+
       parallel {
         stage('Test A') {
           steps {
