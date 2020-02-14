@@ -29,6 +29,7 @@ pipeline {
         stage('Test B') {
           steps {
             echo 'Test B Pass'
+            error 'Error !!!'
           }
         }
 
