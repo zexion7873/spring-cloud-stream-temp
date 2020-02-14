@@ -48,8 +48,8 @@ pipeline {
       }
       steps {
         echo 'Deploy Success !'
-        echo "BUILD_ID : ${env.BUILD_ID}"
-        echo "BUILD_NUMBER : ${env.BUILD_NUMBER}"
+        echo "BUILD_ID : ${BUILD_ID}"
+        echo "BUILD_NUMBER : ${BUILD_NUMBER}"
         echo "BUILD_TAG : ${env.BUILD_TAG}"
         echo "BUILD_URL : ${env.BUILD_URL}"
         echo "EXECUTOR_NUMBER : ${env.EXECUTOR_NUMBER}"
@@ -58,7 +58,7 @@ pipeline {
         echo "JOB_NAME : ${env.JOB_NAME}"
         echo "NODE_NAME : ${env.NODE_NAME}"
         echo "WORKSPACE : ${env.WORKSPACE}"
-        echo "BRANCH_NAME : ${env.BRANCH_NAME}"
+        echo "BRANCH_NAME : ${BRANCH_NAME}"
         echo "CHANGE_ID : ${env.CHANGE_ID}"
       }
     }
