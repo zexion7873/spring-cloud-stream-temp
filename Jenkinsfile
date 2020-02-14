@@ -50,6 +50,9 @@ pipeline {
         message 'Test Success, To Deploy ?'
         id 'Yes.'
       }
+      steps {
+      	echo 'Check Deploy Pass'
+      }
     }
 
     stage('Deploy') {
