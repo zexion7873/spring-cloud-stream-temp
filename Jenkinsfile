@@ -14,7 +14,7 @@ pipeline {
       when {
         anyOf {
           branch 'master'
-          branch 'uat'
+          branch 'release'
         }
 
       }
