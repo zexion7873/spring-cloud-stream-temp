@@ -7,6 +7,7 @@ pipeline {
       }
       steps {
         echo 'Build Pass !'
+        error 'Error signal'
       }
     }
 
