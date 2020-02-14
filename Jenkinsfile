@@ -61,7 +61,6 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh "sudo chmode -R 777 ${WORKSPACE}"
         sh "cp ${WORKSPACE}/target/spring-cloud-stream-kafka.war /Users/linjingkai/Desktop/Build/"
         echo 'Deploy Success !'
         echo "BUILD_ID : ${BUILD_ID}"
