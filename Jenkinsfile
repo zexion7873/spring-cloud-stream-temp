@@ -18,7 +18,7 @@ pipeline {
         }
 
       }
-
+      failFast true
       parallel {
         stage('Test A') {
           steps {
@@ -29,7 +29,6 @@ pipeline {
         stage('Test B') {
           steps {
             echo 'Test B Pass'
-            error 'Error !!!'
           }
         }
 
