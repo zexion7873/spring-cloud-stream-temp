@@ -2,6 +2,10 @@ pipeline {
   agent any
   stages {
     stage('Build') {
+      input {
+        message 'Test Success, To Deploy ?'
+        id 'Yes.'
+      }
       steps {
         echo 'Build Pass !'
       }
@@ -71,6 +75,7 @@ pipeline {
         echo "CHANGE_ID : ${env.CHANGE_ID}"
       }
     }
+
 
   }
   options {
