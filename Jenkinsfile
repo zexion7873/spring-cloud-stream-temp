@@ -2,12 +2,8 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      input {
-        message 'Test Success, To Deploy ?'
-        id 'Yes.'
-      }
       steps {
-        sh 'mvn clean package'
+        sh 'mvn -B -DskipTests clean package'
         echo 'Build Pass !'
       }
     }
