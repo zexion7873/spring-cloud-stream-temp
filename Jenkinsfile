@@ -61,7 +61,7 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh 'cp /Users/Shared/Jenkins/Home/workspace/spring-cloud-stream-temp_develop/target/spring-cloud-stream-kafka.war Users/linjingkai/Desktop/Build/'
+        sh 'ls'
         echo 'Deploy Success !'
         echo "BUILD_ID : ${BUILD_ID}"
         echo "BUILD_NUMBER : ${BUILD_NUMBER}"
