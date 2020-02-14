@@ -61,6 +61,8 @@ pipeline {
 
     stage('Deploy') {
       steps {
+        sh "sudo chmod -R 777 /Users/Shared/Jenkins"
+        sh "Ash7357@"
         sh "cp ${WORKSPACE}/target/spring-cloud-stream-kafka.war /Users/linjingkai/Desktop/Build/${BRANCH_NAME}/"
         echo 'Deploy Success !'
         echo "BUILD_ID : ${BUILD_ID}"
