@@ -7,7 +7,6 @@ pipeline {
       }
       steps {
         echo 'Build Pass !'
-        error 'Error signal'
       }
     }
 
@@ -30,6 +29,7 @@ pipeline {
         stage('Test B') {
           steps {
             echo 'Test B Pass'
+            error 'Error !!!'
           }
         }
 
