@@ -7,6 +7,7 @@ pipeline {
         id 'Yes.'
       }
       steps {
+        sh 'mvn clean package'
         echo 'Build Pass !'
       }
     }
