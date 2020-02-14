@@ -2,9 +2,6 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      environment {
-        testVal = 'aaa'
-      }
       steps {
         echo 'Build Pass !'
       }
@@ -50,16 +47,16 @@ pipeline {
         echo 'Deploy Success !'
         echo "BUILD_ID : ${BUILD_ID}"
         echo "BUILD_NUMBER : ${BUILD_NUMBER}"
-        echo "BUILD_TAG : ${env.BUILD_TAG}"
-        echo "BUILD_URL : ${env.BUILD_URL}"
-        echo "EXECUTOR_NUMBER : ${env.EXECUTOR_NUMBER}"
-        echo "JAVA_HOME : ${env.JAVA_HOME}"
-        echo "JENKINS_URL : ${env.JENKINS_URL}"
-        echo "JOB_NAME : ${env.JOB_NAME}"
-        echo "NODE_NAME : ${env.NODE_NAME}"
-        echo "WORKSPACE : ${env.WORKSPACE}"
+        echo "BUILD_TAG : ${BUILD_TAG}"
+        echo "BUILD_URL : ${BUILD_URL}"
+        echo "EXECUTOR_NUMBER : ${EXECUTOR_NUMBER}"
+        echo "JAVA_HOME : ${JAVA_HOME}"
+        echo "JENKINS_URL : ${JENKINS_URL}"
+        echo "JOB_NAME : ${JOB_NAME}"
+        echo "NODE_NAME : ${NODE_NAME}"
+        echo "WORKSPACE : ${WORKSPACE}"
         echo "BRANCH_NAME : ${BRANCH_NAME}"
-        echo "CHANGE_ID : ${env.CHANGE_ID}"
+        echo "CHANGE_ID : ${CHANGE_ID}"
       }
     }
 
