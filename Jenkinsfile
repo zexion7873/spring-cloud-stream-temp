@@ -13,8 +13,8 @@ pipeline {
           branch 'master'
           branch 'release'
         }
-
       }
+
       failFast true
       parallel {
         stage('Test A') {
@@ -39,6 +39,13 @@ pipeline {
     }
 
     stage('Deploy') {
+      when {
+      	beforeInput true
+        anyOf {
+          branch 'master'
+          branch 'release'
+        }
+      }
       input {
         message 'Test Success, To Deploy ?'
         id 'Yes.'
