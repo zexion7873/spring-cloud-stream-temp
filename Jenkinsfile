@@ -38,7 +38,7 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
+    stage('Check Deploy') {
       when {
       	beforeInput true
         anyOf {
@@ -50,6 +50,9 @@ pipeline {
         message 'Test Success, To Deploy ?'
         id 'Yes.'
       }
+    }
+
+    stage('Deploy') {
       steps {
         echo 'Deploy Success !'
         echo "BUILD_ID : ${BUILD_ID}"
