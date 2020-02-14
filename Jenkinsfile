@@ -37,13 +37,13 @@ pipeline {
     			}
     		}
         }
-        stage('Deliver') {
+        stage('Deploy') {
             input {
-        		message "Test Success, To Deliver ?"
+        		message "Test Success, To Deploy ?"
         		ok "Yes."
         	}
             steps {
-            	echo "Deliver Success !"    
+            	echo "Deploy Success !"    
             	echo "BUILD_ID : ${env.BUILD_ID}" 
             	echo "BUILD_NUMBER : ${env.BUILD_NUMBER}" 
             	echo "BUILD_TAG : ${env.BUILD_TAG}" 
