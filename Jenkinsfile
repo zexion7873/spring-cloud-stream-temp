@@ -6,6 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        sh 'mvn liquibase:update'
         sh 'mvn -B -DskipTests clean package'
         echo 'Build Pass !'
       }
