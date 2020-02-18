@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
 
-    <changeSet id="insert_one_row" author="Kevin Lin" context="dev">
+    <changeSet id="insert_one_row_dev" author="Kevin Lin" context="dev">
         <comment>insert data into account (dev)</comment>
         <insert tableName="account">
             <column name="user_name" value="Kevin"/>
@@ -14,7 +14,7 @@
         </insert>
     </changeSet>
 
-    <changeSet id="insert_one_row" author="Kevin Lin" context="sit">
+    <changeSet id="insert_one_row_sit" author="Kevin Lin" context="sit">
         <comment>insert data into account (sit)</comment>
         <insert tableName="account">
             <column name="user_name" value="Kevin"/>
@@ -22,16 +22,16 @@
         </insert>
     </changeSet>
 
-    <changeSet id="insert_one_row" author="Kevin Lin" context="prod">
-        <comment>insert data into account (prod)</comment>
+    <changeSet id="insert_one_row_uat" author="Kevin Lin" context="uat">
+        <comment>insert data into account (Uat)</comment>
         <insert tableName="account">
             <column name="user_name" value="Kevin"/>
             <column name="user_mail" value="kevin.lin@thinkpower-info.com"/>
         </insert>
     </changeSet>
 
-    <changeSet id="insert_one_row" author="Kevin Lin" context="uat">
-        <comment>insert data into account (Uat)</comment>
+    <changeSet id="insert_one_row_prod" author="Kevin Lin" context="prod">
+        <comment>insert data into account (prod)</comment>
         <insert tableName="account">
             <column name="user_name" value="Kevin"/>
             <column name="user_mail" value="kevin.lin@thinkpower-info.com"/>
