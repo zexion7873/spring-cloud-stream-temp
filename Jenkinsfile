@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'mvn liquibase:update'
+        sh "mvn liquibase:update -Dliquibase.contexts=${BRANCH_NAME}"
         sh 'mvn -B -DskipTests clean package'
         echo 'Build Pass !'
       }
@@ -15,9 +15,9 @@ pipeline {
     stage('Parallel Test') {
       when {
         anyOf {
-          branch 'master'
-          branch 'release'
-        }
+          branch 'sit'
+          branch 'uat' 
+          branch 'prod'
       }
 
       failFast true
@@ -53,8 +53,9 @@ pipeline {
       when {
       	beforeInput true
         anyOf {
-          branch 'master'
-          branch 'release'
+          branch 'sit'
+          branch 'uat' 
+          branch 'prod'
         }
       }
       input {
