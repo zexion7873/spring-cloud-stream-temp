@@ -29,7 +29,7 @@
         </addColumn>
     </changeSet>
     
-    <include file="src/main/resources/properties/${env(spring.profiles.active)}/db.data.process.xml"/>
+    <include file="src/main/resources/properties/{$spring.profiles.active}/db.data.process.xml"/>
 
 <!--    <changeSet id="drop_table_account" author="Kevin Lin">-->
 <!--        <dropTable tableName="account"/>-->
