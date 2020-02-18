@@ -21,9 +21,18 @@
         <rollback>
         </rollback>
     </changeSet>
-    
-    <include file="src/main/resources/db.data.process.xml"/>
 
+    <changeSet id="addColumn_user_mail" author="Kevin Lin">
+        <comment>add account column user_mail</comment>
+        <addColumn tableName="account">
+            <column name="user_mail" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
     
+    <include file="src/main/resources/properties/${spring.profiles.active}/db.data.process.xml"/>
+
+<!--    <changeSet id="drop_table_account" author="Kevin Lin">-->
+<!--        <dropTable tableName="account"/>-->
+<!--    </changeSet>-->
 
 </databaseChangeLog>

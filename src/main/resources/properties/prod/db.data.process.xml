@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="insert_one_row" author="Kevin Lin">
+        <comment>insert data into account (Prod)</comment>
+        <insert tableName="account">
+            <column name="user_name" value="Kevin"/>
+            <column name="user_mail" value="user_mail"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="update_user_mail" author="Kevin Lin" context="PROD">
+        <comment>update_user_mail (Prod)</comment>
+        <update tableName="account">
+            <column name="user_mail" value="kevin.lin@thinkpower-info.com"/>
+            <where>user_name='Kevin'</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>
