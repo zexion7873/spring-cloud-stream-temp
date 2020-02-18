@@ -28,8 +28,8 @@
             <column name="user_mail" type="varchar(255)"/>
         </addColumn>
     </changeSet>
-    
-    <include file="src/main/resources/properties/#{application['spring.profiles.active']}/db.data.process.xml"/>
+
+    <include file="src/main/resources/properties/${spring.liquibase.parameters.active}/db.data.process.xml"/>
 
 <!--    <changeSet id="drop_table_account" author="Kevin Lin">-->
 <!--        <dropTable tableName="account"/>-->
