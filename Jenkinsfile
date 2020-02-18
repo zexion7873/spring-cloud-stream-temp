@@ -16,8 +16,9 @@ pipeline {
       when {
         anyOf {
           branch 'sit'
-          branch 'uat' 
+          branch 'uat'
           branch 'prod'
+        }
       }
 
       failFast true
@@ -54,7 +55,7 @@ pipeline {
       	beforeInput true
         anyOf {
           branch 'sit'
-          branch 'uat' 
+          branch 'uat'
           branch 'prod'
         }
       }
