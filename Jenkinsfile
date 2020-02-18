@@ -70,7 +70,7 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh "cp ${WORKSPACE}/target/spring-cloud-stream-kafka.war /Users/linjingkai/Desktop/Build/${BRANCH_NAME}/"
+        echo "cp ${WORKSPACE}/target/spring-cloud-stream-kafka.war /Users/linjingkai/Desktop/Build/${BRANCH_NAME}/"
         echo 'Deploy Success !'
         echo "BUILD_ID : ${BUILD_ID}"
         echo "BUILD_NUMBER : ${BUILD_NUMBER}"
