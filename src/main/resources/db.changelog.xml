@@ -3,7 +3,6 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <preConditions>
@@ -30,7 +29,7 @@
         </addColumn>
     </changeSet>
     
-    <include file="src/main/resources/properties/#{environment['spring.profiles.active']}/db.data.process.xml" />
+    <include file="src/main/resources/properties/#{application['spring.profiles.active']}/db.data.process.xml"/>
 
 <!--    <changeSet id="drop_table_account" author="Kevin Lin">-->
 <!--        <dropTable tableName="account"/>-->
