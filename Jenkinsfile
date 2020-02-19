@@ -7,7 +7,7 @@ pipeline {
     stage('Build') {
       steps {
         sh "mvn liquibase:update -Dliquibase.contexts=${BRANCH_NAME}"
-        sh "mvn -B -DskipTests clean package -P ${BRANCH_NAME}"
+        sh "mvn -DskipTests clean package -P ${BRANCH_NAME}"
         echo 'Build Pass !'
       }
     }
