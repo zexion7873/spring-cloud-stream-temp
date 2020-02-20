@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  tools {
-    maven 'apache-maven-3.6.3'
-  }
   stages {
     stage('Build') {
       steps {
@@ -19,19 +16,20 @@ pipeline {
           branch 'uat'
           branch 'prod'
         }
-      }
 
+      }
       failFast true
       parallel {
         stage('Test A') {
-          steps {
-            sh 'mvn test'
-            echo 'Test A Pass'
-          }
           post {
             always {
               echo 'Test Report'
-              }
+            }
+
+          }
+          steps {
+            sh 'mvn test'
+            echo 'Test A Pass'
           }
         }
 
@@ -52,19 +50,21 @@ pipeline {
 
     stage('Check Deploy') {
       when {
-      	beforeInput true
+        beforeInput true
         anyOf {
           branch 'sit'
           branch 'uat'
           branch 'prod'
         }
+
       }
       input {
         message 'Test Success, To Deploy ?'
         id 'Yes.'
       }
       steps {
-      	echo 'Check Deploy Pass'
+        echo 'Check Deploy Pass'
+        mail(subject: 'aaa', body: 'bb', to: 'kevin.lin@thinkpower-info.com')
       }
     }
 
@@ -86,7 +86,9 @@ pipeline {
       }
     }
 
-
+  }
+  tools {
+    maven 'apache-maven-3.6.3'
   }
   options {
     retry(1)
