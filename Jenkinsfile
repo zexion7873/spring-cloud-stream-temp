@@ -75,7 +75,7 @@ pipeline {
         sh "cd /Users/linjingkai/Applications/apache-tomcat-8.5.51/webapps"
         sh "rm -f spring-cloud-stream-kafka.war"
         sh "cp ${WORKSPACE}/target/spring-cloud-stream-kafka.war /Users/linjingkai/Desktop/Build/${BRANCH_NAME}/"
-        sh "/Users/linjingkai/Applications/apache-tomcat-8.5.51/bin/.sh"
+        sh "/Users/linjingkai/Applications/apache-tomcat-8.5.51/bin/startup.sh"
 
         echo 'Deploy Success !'
         echo "BUILD_ID : ${BUILD_ID}"
