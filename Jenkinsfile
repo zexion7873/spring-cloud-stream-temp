@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh "mvn liquibase:update -Dliquibase.contexts=${BRANCH_NAME}"
+        // sh "mvn liquibase:update -Dliquibase.contexts=${BRANCH_NAME}"
         sh "mvn -DskipTests clean package -P ${BRANCH_NAME}"
         echo 'Build Pass !'
       }
@@ -70,7 +70,13 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        echo "cp ${WORKSPACE}/target/spring-cloud-stream-kafka.war /Users/linjingkai/Desktop/Build/${BRANCH_NAME}/"
+        sh "/Users/linjingkai/Applications/apache-tomcat-8.5.51/bin/shutdown.sh"
+        sleep(time:20, unit:"SECONDS")
+        sh "cd /Users/linjingkai/Applications/apache-tomcat-8.5.51/webapps"
+        sh "rm -f spring-cloud-stream-kafka.war"
+        sh "cp ${WORKSPACE}/target/spring-cloud-stream-kafka.war /Users/linjingkai/Desktop/Build/${BRANCH_NAME}/"
+        sh "/Users/linjingkai/Applications/apache-tomcat-8.5.51/bin/.sh"
+
         echo 'Deploy Success !'
         echo "BUILD_ID : ${BUILD_ID}"
         echo "BUILD_NUMBER : ${BUILD_NUMBER}"
