@@ -71,7 +71,7 @@ pipeline {
     stage('Deploy') {
       steps {
         sh "/Users/linjingkai/Applications/apache-tomcat-8.5.51/bin/shutdown.sh"
-        sleep(time:20, unit:"SECONDS")
+        sleep(time:10, unit:"SECONDS")
         sh "cd /Users/linjingkai/Applications/apache-tomcat-8.5.51/webapps"
         sh "rm -f spring-cloud-stream-kafka.war"
         sh "cp ${WORKSPACE}/target/spring-cloud-stream-kafka.war /Users/linjingkai/Applications/apache-tomcat-8.5.51/webapps/"
